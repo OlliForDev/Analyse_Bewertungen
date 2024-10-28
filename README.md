@@ -6,7 +6,7 @@ Beim genaueren Hinschauen ist mir aufgefallen, dass ein großer Teil der Bewertu
 Aufgrund der sehr guten Bewertung und der doch auffällig wenig detailierten Bewertungen, hat es mich interessiert, wie Scorings berechnet werden.
 
 ## Entwicklungsablauf
-###Datenextraktion
+### Datenextraktion
 Um dies herauszufinden, habe ich einen Webscraper für das Portal entwickelt, der automatisiert alle Bewertungen eines Anbieters extrahiert.
 Zum Einsatz kam hierfür Python mit den Modulen Selenium und BeautifulSoup.
 
