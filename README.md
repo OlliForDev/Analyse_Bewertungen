@@ -2,8 +2,8 @@
 
 ## Wie kam es zu der Projektidee? 
 Auf der Suche nach einem neuem Stromanbieter bin ich in einem Vergleichsportal auf die Bewertungssektion gestoßen. 
-Beim genaueren Hinschauen ist mir aufgefallen, dass ein großer Teil der Bewertungen ohne Punktevergabe eingereicht wurden.
-Aufgrund der sehr guten Bewertung und der doch auffällig wenig detailierten Bewertungen, hat es mich interessiert, wie Scorings berechnet werden.
+Beim genaueren Hinschauen ist mir aufgefallen, dass ein großer Teil der Bewertungen ohne Punktevergabe eingereicht wurde.
+Aufgrund der sehr guten Bewertung und den doch auffällig wenig detailierten Bewertungen, hat es mich interessiert, wie das Scoring auf der Website berechnet wird.
 
 ## Entwicklungsablauf
 ### Datenextraktion
@@ -15,6 +15,6 @@ Die extrahierten Daten von dem Vergleichsportal wurden anschließend in einer lo
 Der Nachvollziehbarkeit und der Bereitstellung wegen wurden die Daten anschließend als CSV-Datei exportiert.
 
 ### Datenanalyse
-Um den eingangswähnten Auffälligkeiten einer Antwort zuordnen zu können, ging es im Jupyter-Notebook mit Python und dem Modul Pandas weiter.
+Um den eingangserwähnten Auffälligkeiten eine Antwort zuordnen zu können, ging es im Jupyter-Notebook mit Python und dem Modul Pandas weiter.
 
 Alle Ergebnisse der Analyse können in der Datei sw_karlsruhe_ratings_verivox.ipynb im Verzeichnis data_analysis eingesehen werden. 
