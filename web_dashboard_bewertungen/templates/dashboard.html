@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <style>
+        .full-height-container {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+    <div class="container mt-4">
+        <div class="row">
+            <h1>Dashboard Kundenbewertungen</h1>
+            <p>
+               Dargestellt werden alle Kundenbewertungen aus einem Online-Vergleichsportal, die für einen Energieversorger aus Baden-Württemberg abgegeben wurden. <br>
+               Die Charts vermitteln einerseits Einblicke über die Zufriedenheit der Kunden und zum anderen die Präsenz des Energieversorgers auf der Vergleichsplattform.
+               Somit können Rückschlüsse zur  Kundenzufriedenheit über die Preisgestaltung und die Serviceerbringung gezogen werden. (Zielsetzungen sind fiktive Annahmen)
+            </p>
+            <p>Schaue gern auf mein <a href="https://github.com/OlliForDev/Analyse_Bewertungen"> Github-Profil <span><img src="{{ url_for('static', filename='img/github-mark.png') }}" alt="" width="20px"></span></a>, um mehr über das Projekt zu erfahren.</p>
+        </div>  
+        <div class="row">
+            {% import 'marcro_visualization.html' as m_charts %} 
+            <div class="container my-4">
+                <!-- First row with three equal columns (approx. 2.66 units each in 8-column grid) -->
+                <div class="row d-flex align-items-stretch ">
+                    <h3 class="ps-4 pt-4">⌀ Scoring Kundenzufriedenheit {{ latest_month }} (aktuellster Monat)</h3>
+                    <!-- Left side: Columns 4-->
+                    {{ m_charts.kpi('Preis',  price[1] , '%', price[1] -  price[0]) }}
+                    <!-- Left side: Columns 5-->
+                    {{ m_charts.kpi('Service',  service[1] , '%', service[1] -  service[0]) }}
+                    <!-- Left side: Columns 5-->
+                    {{ m_charts.kpi('Anbieterwechsel',  provider_change[1] ,'%', provider_change[1] -  provider_change[0]) }}
+                    {{ m_charts.kpi('Bewertungen',  count_ratings[1] , '' , count_ratings[1] -  count_ratings[0]) }}
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 p-5" style="max-height: 400px;">
+                        <h3>Anzahl Bewertungen pro Monat</h3>
+                        {{ m_charts.chart('number_reviews_by_months', chart_data=bar_last_13_month_data, chart_type='bar', chart_labels=bar_last_13_month_labels) }}
+                    </div> <!-- 50% width -->
+                    <div class="col-lg-6 col-md-12 p-5" style="max-height: 400px;">
+                        <h3>Weiterempfehlungsverhältnis</h3>
+                        {{ m_charts.pie_chart('cust_recommendations', chart_data=pie_rating_ratio_data, chart_type='pie', chart_labels=pie_rating_ratio_labels) }}
+                    </div> <!-- 25% width -->
+                </div>
+                <div class="row mt-3" style="height: 400px;">
+                    <div class="col-12">
+                        <div class="p-5" style="height: 400px;">
+                            <h3>Weiterempfehlungsquote pro Monat</h3>
+                            {{ m_charts.mixed_chart
+                                (   chart_id='recommendation_ratio',
+                                    chart_data_1=ratio_per_month_data,
+                                    chart_type_1='bar',
+                                    chart_legend_1='Weiterempfehlungsquote',
+                                    chart_data_2=target_per_month_data,
+                                    chart_type_2='line',
+                                    chart_legend_2='Ziel Weiterempfehlungsquote',
+                                    chart_labels=ratio_per_month_labels
+                                ) 
+                            }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JavaScript (Optional, but includes components like modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
