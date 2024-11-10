@@ -12,4 +12,4 @@ Um dieser Frage nachzugehen, habe ich dieses Projekt mit folgenden Bestandteilen
 * kleine Datenanalyse und Klärung der Fragestellung im Jupyter-Notebook
 * Visualisierung über eine Web-App aufgesetzt über Python mit dem Web-Framework Flask und der Template-Engine Jinja, als Beispiel, wie ein Monitoring zur Kundenzufriedenheit basierend auf den extrahierten Daten aussehen könnte
 
-Link zur Website folgt...
+[Link zum Web-Dashboard](https://oforner.pythonanywhere.com/)
